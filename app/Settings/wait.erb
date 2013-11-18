@@ -1,0 +1,232 @@
+<div data-role="page" id="myPageWait">
+<script>
+
+$( '#myPageWait' ).live( 'pageinit',function(event){
+  check_size();
+
+
+});
+
+
+
+function update_progress2(downloaded){
+var tokos;
+
+
+total=parseInt($("#fileSize").val());
+tokos=parseInt((downloaded/total)*100);
+
+  update_progress(tokos,'progressBar');
+$("#percentText").html(tokos);
+}
+
+
+function downloaded_size(size,mapSize){
+
+
+
+
+$("#downloaded_size").html(bytesToSize(size));
+  
+
+}
+
+
+function check_size(){
+
+
+  $.ajax({
+       
+       url: "http://maps.georates.net/maps/newApp/filesize.php",
+       success: function( data ) {
+         console.log(data.fileSize);
+       
+       $( "#fileSize" ).val( parseInt(data.fileSize) );
+       
+       $( "#mapSizeMB" ).html( bytesToSize(data.fileSize));
+         
+       
+       
+       
+       
+        
+          
+       },
+       dataType: "jsonp" ,
+     
+     
+     });
+     
+    
+    
+    
+    
+    
+ 
+   
+
+
+}
+
+function pingSize(){
+
+$("#textPercentDiv").fadeIn();
+  var map_size=$( "#fileSize" ).val();
+             
+             var map_file="mbtiles111111.sqlite.zip.rhodownload";
+           var url='<%=url_for(:controller=>:Settings,:action=>:check_map_size)%>?map_file="'+map_file;
+            
+             $.ajax({
+               url: url,
+               cache: false,
+             } );
+
+
+}
+
+
+function get_map(){
+  
+  
+  
+
+
+ data= new Object();
+ 
+    console.log("sksem");
+        var url2='<%=url_for(:controller=>:Settings,:action=>:ajax_get_mbtiles)%>';
+           
+          
+  $.get(url2);
+             
+  
+  
+  
+  
+  
+  
+  pingSize(); 
+  
+  
+  
+  
+  }
+
+  
+
+
+
+
+
+  
+  
+
+
+function finalizeMap(){
+
+
+
+alert("iiiii");
+$("#downloadMapStatus").hide();
+
+  $("#download_finished").show();
+
+
+}
+  
+  
+
+  
+</script>
+
+  <div data-role="header" data-position="inline">
+    <h1>   Please wait...</h1>
+    
+  </div>
+
+  <div data-role="content">
+   
+     
+  
+  
+  
+
+
+  <div id="downloadMapStatus">
+  
+  
+<div class="ui-grid-b" id="statusSpinner">
+  <div class="ui-block-a" style="width:33%">  </div>
+  <div class="ui-block-b">    <div id="spinner" style="display:none;text-align:center;"><img src="/public/images/loadingFile.GIF"></div></div>
+  <div class="ui-block-c" style="width:33%"><div id="textPercentDiv" style="display:none">Completed: <span id="percentText">-</span>%  </div></div>
+</div><!-- /grid-b -->
+  
+  
+  
+  
+      <div class="meter orange nostrips" id="progressBar">
+              <span style="width: 0%"></span>
+            </div>
+     <br><br>
+<input type="text" type="hidden" id="fileSize" style="display:none;"> 
+
+    <ul data-role="listview" style="top:20px;" id="download_ul">
+    
+  
+    
+    <li data-role="heading" >Downloaded</li>
+    
+    <li id="downloaded_size">--</li>
+    
+    <li data-role="heading"> from</li>
+    
+<li id="mapSizeMB"> </li>
+  
+  
+</ul>
+      
+      
+      
+      <ul id="cancel_download" selected="true" title="Wait">
+  <li id="downloadButton"><a href="#" onclick="javascript: $('#spinner').show();$('#downloadButton').hide(); get_map();return false;" data-role="button">Start</a></li>
+          <li><a href="<%=url_for :action => :cancel_httpcall%>" data-role="button">Cancel Download</a></li>
+          <br/><br/>
+      </ul>
+
+    </div>  
+<div id="download_finished" style="display:none">
+   
+          <h3>Download Finished</h3>
+          <img src="/public/images/wait.png">
+          <span id="status_mesage_unpack"> Download Finished.We have downloaded offline map for the app. Now we have to unpack POI database.
+          
+          
+          <a data-role="button" href="/app/Settings/do_fast_reset">Unpack POI Database</a>   
+          ...</span>
+          
+      
+
+   </div>   
+      
+      
+      
+      <div id="unpack_finished" style="display:none !important">
+         
+                <h3>Map Update is finished.Hurra! </h3>
+                
+                <span id="status_mesage_success">You have successfully updated the maps of App. 
+                <a data-role="button" href="<%=url_for(:controller=>:Settings,:action=>:show_map)%>">See the map</a>
+                </span>
+                
+                
+                
+            
+      
+         </div>   
+      
+      
+      
+      
+  </div>
+
+</div>

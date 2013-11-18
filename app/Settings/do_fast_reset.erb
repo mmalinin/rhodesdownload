@@ -1,0 +1,98 @@
+<div data-role="page" data-theme="b">
+
+  <div data-role="header" data-position="inline" data-theme="b">
+    <h1>Reset</h1>
+ </div>
+
+  <div data-role="content">
+   
+    <div style="margin: 10px;" id="preword">
+    
+Here you can unpack  applications data, when you are installing it for the first time, or re-initialize the application
+in case of broken update. Reset consists of 2 parts
+<br>
+<ul>
+<li>
+1.Map Files Unpacking
+</li>
+<li>
+2.POI database install
+
+</li>
+</ul>
+    
+<a data-role="button" href="#" onclick="do_fast_reset('<%=url_for(:controller=>:Settings,:action=>:do_do_fast_reset)%>');">Click Here To Process </a>    
+    
+    </div>
+    
+    
+    
+    
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+
+<div id="poi_update" style="display:none !important;">
+ Unpacking the POI database
+    Please wait,this can take a while...<br>
+    <div class="meter orange nostrips" id="progressBar">
+      <span style="width: 1%"></span>
+    </div>
+    <ul id="home" selected="true" title="Wait">
+       
+       
+    </ul>
+
+</div>
+
+ 
+
+<div id="map_update" style="display:none !important;text-align:center;">
+  
+
+   
+          <h3>Unpacking Map's Offline data</h3>
+          <img src="/public/images/wait.png">
+          <span id="status_mesage_unpack" >Unpacking Map Archive Files.This can take  up to 10minutes or more depending on device...Please be patient...</span>
+          
+
+
+</div>
+
+
+<div id="finish_update" style="display:none !important;text-align:center;">
+  
+
+   
+          <h3>Finish</h3>
+          <img src="/public/images/finish.png">
+          <p>You have successfully  reset/insralled  the application initial  database of pois and map</p>
+          
+          <a data-role="button" href="<%=url_for(:controller=>:Settings,:action=>:show_map)%>">Go To Map</a>
+          
+
+
+</div>
+  </div>
+
+  
+  
+  
+  
+
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+</div>

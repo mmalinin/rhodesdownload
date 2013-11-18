@@ -1,0 +1,88 @@
+
+<style type="text/css">
+
+.ui-page_tbilisi {
+  background: url(/public/standart/background.jpg);
+     background-repeat:repeat-y;
+     background-position:center center;
+     background-attachment:scroll;
+     background-size:100% 100%;
+}
+
+
+</style>
+<div data-role="page" data-url="<%= Rho::RhoConfig.start_path %>/" id="newPage" data-theme="b" >
+
+  <div data-role="header" data-position="inline" data-theme="b">
+   
+
+  <script type="text/javascript">
+function fixContentHeight() {
+                                                   
+                                  
+                                  
+                                  
+                                  
+                                  
+                              
+                                    
+                                        /* Calculate the geometry that our content area should take */
+                                        var header =$("div[data-role='header']:visible");
+                                        var footer =  $("div[data-role='footer']:visible");
+                                        var content = $("div[data-role='content']:visible:visible");
+                                        var viewport_height = $(window).height();
+                                        
+                                        var content_height = viewport_height - header.outerHeight() - footer.outerHeight();
+                                        
+
+                                        content_height -= (content.outerHeight() - content.height());
+                                        
+                             
+                                  
+                                  $('#home').height(content_height);
+                    
+                                 
+                              }
+                                
+          $( '#newPage' ).live( 'pageinit',function(event){  
+           
+                    
+                 
+            
+            
+            
+            
+     
+      
+          
+          $(window).bind("orientationchange resize pageshow", fixContentHeight);
+          
+            
+          
+               });
+       
+  
+  </script>
+  <h3>Main Menu</h3>
+<a data-role="button" data-icon="gear"  class="ui-btn-left" data-position="right" href="<%=url_for(:controller=>:Settings,:action=>:map_settings)%>">Settings</a> 
+    
+       
+           
+            </div>
+ 
+
+  <div data-role="content"   id="home" class="ui-page_tbilisi" style="padding-top:25%;">
+
+<div class="ui-body-d ui-body">
+ We would need to  unpack some data only for one time, as it seems you have opened it for the first time. Also we would need to download the offline map from the server. 
+ Please be patient, as it would take a while, till you can get the file. 
+   <a href="<%= url_for(:controller=>:Settings,:action=>:do_first_reset)%>" data-role="button">GO! </a>
+  </div>
+ 
+
+  </div>
+  
+          
+
+</div>
+           

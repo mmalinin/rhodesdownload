@@ -1,0 +1,25 @@
+#sdk: "C:/MotorolaRhoMobileSuite4.0.0/ruby/lib/ruby/gems/1.9.1/gems/rhodes-4.0.0"
+sdkversion: "4.0.0"
+name: "rhodownload"
+version: 1.0
+vendor: "rhomobile"
+build: "debug"
+bbver: 6.0
+applog: "rholog.txt"
+iphone:
+  configuration: "Release"
+  sdk: "iphonesimulator6.0"
+  provisionprofile: 
+  codesignidentity: 
+  entitlements: 
+  BundleIdentifier: "com.rhomobile.rhodownload"
+  BundleURLScheme: "rhodownload"
+wp:
+  productid: "b936db60-327d-0131-dc94-3888e32f9158"
+symbian:
+  uid: "0xecd4472e"
+android:
+  version: "2.3.3"
+  emulator: "myAvd"
+extensions:
+  - rhoconnect-client

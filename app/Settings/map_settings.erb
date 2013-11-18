@@ -1,0 +1,47 @@
+<div data-role="page">
+
+  <div data-role="header" data-position="inline">
+<a href="/app"  id="GoBack" rel="external" data-icon="back">Main menu</a>
+  
+  <h1>Settings</h1>
+  </div>
+
+  <div data-role="content">
+<div class="content-primary">
+
+    <form action="#" method="get">
+
+
+<!--
+      <div data-role="fieldcontain">
+        <label for="slider2">POIs</label>
+<a href="<%=url_for(:controller=>:Settings,:action=>:update_pois)%>" data-role="button">Check for Update</a>
+     
+      </div>
+
+    
+
+
+    -->
+<div data-role="fieldcontain">
+      <label for="slider2">Maps</label>
+<a href="<%=url_for(:controller=>:Settings,:action=>:update_maps)%>" data-role="button">Update</a>
+    
+    </div>
+<div data-role="fieldcontain">
+      <label for="slider2">Reset Map Data (Removes ALL PINS!!!!)</label>
+<a href="<%=url_for(:controller=>:Settings,:action=>:do_fast_reset)%>" data-role="button">Reset App </a>
+    
+    </div>
+<!--
+<div data-role="fieldcontain">
+      <label for="slider2">Globals</label>
+<a href="<%=url_for(:controller=>:Globals,:action=>:index)%>" data-role="button">Global Values</a>
+    
+    </div>
+--->
+  </form>
+  </div><!--/content-primary -->    
+  
+  </div>
+</div>
